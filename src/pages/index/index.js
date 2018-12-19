@@ -11,7 +11,7 @@ import pcview from './pcView.vue'
 //moble总模块
 import moble from './mobleView.vue'
 //过滤js
-import mixin from 'js/mixin.js'
+import {currency2} from 'js/filter.js'
 //elementui控件
 
 //国际化 按需导入

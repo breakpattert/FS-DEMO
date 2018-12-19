@@ -8,7 +8,7 @@ import MintUI from 'mint-ui'
 Vue.use(MintUI)
 import Footnav from 'components/FootNav.vue'
 import Swipe from 'components/Swipe.vue'
-import mixin from 'js/mixin.js'
+
 import zh from 'js/lang/zh';
 import en from 'js/lang/en';
 import VueI18n from 'vue-i18n'

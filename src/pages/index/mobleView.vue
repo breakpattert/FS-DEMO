@@ -28,7 +28,10 @@
         <div class="line-block line-block-gray">
           <div class="lineblock-title">
             <span class="lineblock-font">最热商品推荐</span>
+            <div class="price">￥{{price | currency2}}</div>
           </div>
+          <div>{{time | parseTime}}</div>
+          <div>{{time2 | formatTime}}</div>
         </div>
         <div class="hot-goods js-waterfull-wrap" data-src="">
           <!--<ul class="js-list js-lazy" data-src=""
@@ -66,6 +69,8 @@
 	import Vue from 'vue'
 	import Swipe from 'components/Swipe.vue'
 	import MintUI from 'mint-ui'
+//	公共处理方法
+	import {currency2,parseTime,formatTime} from 'js/filter.js'
 	Vue.use(MintUI)
 	import Footnav from 'components/FootNav.vue'
 	 export default {
@@ -77,6 +82,9 @@
 		        loading:false,
 		        allLoad:false,
 		        bannerLists:null,
+		        price:6,
+		        time:1545204780000,
+		        time2:1545148800
 	 	 	}
 	 	 },
 	 	 beforeMount(){
@@ -87,6 +95,7 @@
 	 		//虚拟DOM渲染前操作调用函数
 			//  this.getList()
 			// this.getBannerList()
+//			this.price=currency2(this.price);
 	    },
 	    mounted(){
 	    	//数据加载完成时一般做数据的缓存
@@ -172,17 +181,20 @@
      },
     //过滤
     filters:{
-        currency(num){
-            num=num+''
-            let arr=num.split('.')
-            if (arr.length===1){
-                return num+'.00'
-            } else {
-                if (arr[1].length===1){
-                    return num+'0'
-                } else return num
-            }
-        }
+		currency2,
+		parseTime,
+		formatTime
+//      currency(num){
+//          num=num+''
+//          let arr=num.split('.')
+//          if (arr.length===1){
+//              return num+'.00'
+//          } else {
+//              if (arr[1].length===1){
+//                  return num+'0'
+//              } else return num
+//          }
+//      }
     },
     watch: {
     	//一般监听某一个值的变化
@@ -194,6 +206,7 @@
     },
     computed: {
     	//一般监听数据变化
+    	
     }
     
 	 }
