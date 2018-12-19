@@ -62,12 +62,12 @@
 <script>
 	import url from 'js/api.js'
 	import axios from 'axios'
+	Vue.prototype.$http=axios;
 	import Vue from 'vue'
 	import Swipe from 'components/Swipe.vue'
 	import MintUI from 'mint-ui'
 	Vue.use(MintUI)
 	import Footnav from 'components/FootNav.vue'
-	
 	 export default {
 	 	 data () {
 	 	 	return{
@@ -79,21 +79,22 @@
 		        bannerLists:null,
 	 	 	}
 	 	 },
+	 	 beforeMount(){
+		 //模板即将挂在前面执行
+	 	 },
 	 	 components: {Footnav,Swipe},
 	 	created(){
-    	
-      this.getList()
-      this.getBannerList()
-	
-	    
-	      
+	 		//虚拟DOM渲染前操作调用函数
+			//  this.getList()
+			// this.getBannerList()
 	    },
-	    computed(){
-	    	
-//	    	this.initData();
+	    mounted(){
+	    	//数据加载完成时一般做数据的缓存
+    		this.initData();
 	    },
 	 	 methods:{
-        getList(){
+	 	 //常规请求的操作
+         getList(){
             if (this.allLoad) return
             this.loading=true
             axios.post(url.hostLists,{
@@ -110,26 +111,66 @@
                 this.pageNum++
                 this.loading=false
             })
-//            this.getWeekList = [...this.getWeekList, ...getWeekList.result.data];
+            //es6数组操作
+			//this.getWeekList = [...this.getWeekList, ...getWeekList.result.data];
         },
         getBannerList(){
             axios.get(url.bannerLists).then((response)=>{
                 this.bannerLists=response.data.lists
             })
         },
+        //异步请求的操作
+        async getList2(){
+        	return '异步函数'
+        },
+        awaitMethod(num){
+		  return new Promise((resolve,reject)=>{
+		    setTimeout(()=>{
+		      resolve(2*num);
+		    },2000)
+		  })
+		},
+		async test (){
+		  let result = await this.awaitMethod(30);
+		  let result1 = await this.awaitMethod(50);
+    	  let result2 = await this.awaitMethod(30);
+		  console.log(result);
+		  console.log(result1);
+		  console.log(result2);
+		},
+        //并发操作
+         glist1(){
+          return axios.get(url.bannerLists)
+         },
+         glist2(){
+         	return this.axios.post(url.hostLists,{
+                pageNum:this.pageNum,
+                pageSize:this.pageSize
+            })
+         },
+        initData(){
+
+        	this.$http.all([this.glist1(),this.glist2()]).then(this.$http.spread(
+        		(a,b)=>{
+        			console.log(a,6)
+        			console.log(b,7)
+        		}
+        	))
+
+        },
         showGoods(){
             window.location.href=`/goods?id=${list.id}`
         },
-        initData(){
-        	console.log(444)
-        	const [list1,list2]=PromiseAll(
-        		 this.getList(),
-        		 this.getBannerList()
-        	)
-        }
         
 
     },
+     destroyed() {
+//   	数据销毁执行
+     },
+     updated(){
+//   	数据重新渲染执行
+     },
+    //过滤
     filters:{
         currency(num){
             num=num+''
@@ -143,6 +184,18 @@
             }
         }
     },
+    watch: {
+    	//一般监听某一个值的变化
+//  	clusterInfo: {
+//  		deep: true,
+//    		immediate: false	
+//  	}
+    	
+    },
+    computed: {
+    	//一般监听数据变化
+    }
+    
 	 }
 </script>
 
