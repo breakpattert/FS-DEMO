@@ -1,34 +1,11 @@
 <template>
-	<div>
-    <el-button @click="show = !show">Click Me</el-button>
-
-    <div style="display: flex; margin-top: 20px; height: 100px;">
-      <transition name="el-fade-in-linear">
-        <div v-show="show" class="transition-box">.el-fade-in-linear</div>
-      </transition>
-      <transition name="el-fade-in">
-        <div v-show="show" class="transition-box">.el-fade-in</div>
-      </transition>
-    </div>
-	    <el-table
-	      :data="tableData"
-	      style="width: 100%">
-	      <el-table-column
-	        prop="date"
-	        label="日期"
-	        width="180">
-	      </el-table-column>
-	      <el-table-column
-	        prop="name"
-	        label="姓名"
-	        width="180">
-	      </el-table-column>
-	      <el-table-column
-	        prop="address"
-	        label="地址">
-	      </el-table-column>
-	    </el-table>
-  </div>
+	<div class="container">
+	    <el-container>
+		  <el-header>Header</el-header>
+		  <el-main>Main</el-main>
+		  <el-footer>Footer</el-footer>
+		</el-container>
+	</div>
 
 </template>
 
@@ -66,17 +43,28 @@ Vue.use(ElementUI)
   }
 </script>
 <style>
-  .transition-box {
-    margin-bottom: 10px;
-    width: 200px;
-    height: 100px;
-    border-radius: 4px;
-    background-color: #409EFF;
+	@import '../../modules/css/PCinitial.css'
+	body{
+		margin:0 !important;	
+		}
+	.container{
+
+	}
+   .el-header, .el-footer {
+    background-color: #B3C0D1;
+    color: #333;
     text-align: center;
-    color: #fff;
-    padding: 40px 20px;
-    box-sizing: border-box;
-    margin-right: 20px;
+    line-height: 110px;
+    height:110px !important;
   }
+  
+  .el-main {
+    background-color: #E9EEF3;
+    color: #333;
+    text-align: center;
+    line-height: 160px;
+    height:720px;
+  }
+
   
 </style>

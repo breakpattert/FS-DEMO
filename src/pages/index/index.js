@@ -1,7 +1,7 @@
 //页面初始化css
-import 'css/common.css'
-//当前页面的css
-import './index.css'
+//import 'css/common.css'
+////当前页面的css
+//import './index.css'
 //请求的url
 import url from 'js/api.js'
 import axios from 'axios'
