@@ -143,7 +143,7 @@
           return axios.get(url.bannerLists)
          },
          glist2(){
-         	return this.axios.post(url.hostLists,{
+         	return axios.post(url.hostLists,{
                 pageNum:this.pageNum,
                 pageSize:this.pageSize
             })
