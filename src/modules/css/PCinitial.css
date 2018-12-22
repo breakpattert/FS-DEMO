@@ -43,6 +43,7 @@ span {
   font-size: 14px;
   color: #323232;
   box-sizing: border-box;
+  font-family: 'Open Sans',Arial,Helvetica,sans-serif !important;
 }
 body{
 	padding:0!important;
@@ -180,7 +181,7 @@ table {
 }
 
 .f13 {
-  font-style: 13px;
+  font-size: 13px;
 }
 
 .f14 {
@@ -226,7 +227,10 @@ table {
 .w200 {
   width: 200px;
 }
-
+.w1428{
+	width:1428px;
+	margin: 0 auto;
+}
 .h100 {
   height: 100%;
 }
@@ -244,6 +248,9 @@ table {
 /*
  color
 */
+.color70{
+	color:#707473;
+}
 
 .color32 {
   color: #323232;
@@ -272,6 +279,16 @@ table {
 .colorf45d {
   color: #ff455d;
 }
+.color666{
+	color:#666;
+}
+.color168{
+	color: #1686CC;
+}
+.colorD63{
+	color:#D63030;
+}
+
 
 .bgcfff {
   background: #fff;
@@ -1059,9 +1076,33 @@ $imgUrl:'../../../static/images/';
   background: #fff;
 }
 
+/*竖线*/
+.top_right_line {
+	
+    width: 1px;
+    height: 17px;
+    background-color: #ddd;
+    margin: 0px 20px 0;
+}
 //  小图标
 .ico {
   background-position: center center;
   background-repeat: no-repeat;
   background-size: contain;
 }
+/*ico图标*/
+@font-face {
+  font-family: 'iconfont';  /* project id 107817 */
+  src: url('//at.alicdn.com/t/font_107817_r0sbiohymo.eot');
+  src: url('//at.alicdn.com/t/font_107817_r0sbiohymo.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_107817_r0sbiohymo.woff') format('woff'),
+  url('//at.alicdn.com/t/font_107817_r0sbiohymo.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_107817_r0sbiohymo.svg#iconfont') format('svg');
+}
+.iconfont{
+    font-family:"iconfont" !important;
+   font-size:16px;font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+    }
