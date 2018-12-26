@@ -1036,7 +1036,9 @@ $imgUrl:'../../../static/images/';
 
 
 }
-
+.zIndex{
+	z-index: 5;
+}
 .gap {
   height: 10px;
   width: 100%;

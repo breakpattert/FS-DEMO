@@ -47,9 +47,11 @@
 							      <span class="color70 f13">{{item}}</span>
 							      <span class="top_right_line" :class="{'delLine':index==3}"></span>
 								   <!-- <div class="hoverIndex1" @mouseover="hoverShow(index)" v-if="hoverIndex==index">-->
-								    <div class="hoverIndex1" :class="{'tabIndexcss1':index==1,'tabIndexcss2':index==2,}" @mouseover="hoverShow(index)" v-if="index==2">
+								    <div class="hoverIndex1" :class="{'tabIndexcss0':index==0,'tabIndexcss1':index==1,'tabIndexcss2':index==2,'tabIndexcss3':index==3}" @mouseover="hoverShow(index)" v-if="hoverIndex==index">
 								    	<ul>
-								    		<li v-if="index==0" class="Anmelden">2222</li>
+								    		<li v-if="index==0" class="Warenkorb">
+								    			<p>Ihr Einkaufswagen ist leer.</p>
+								    		</li>
 								    		<li v-if="index==1" class="Anmelden">
 								    			<div class="signButton">Anmelden</div>
 								    			<p class="color666 f13 pb15">New Customer?<a class="color168 ml5 f13">Create an account</a></p>
@@ -97,9 +99,11 @@
 												  <h2>Sprache/Währung</h2>
 									    			<el-collapse>
 									    			  <el-collapse-item :title="title2.name" name="1">
-													    <div class="dslMain">
-													    	<div class="top_country_search_block">
-													    		
+													    <div class="dslMain dslMain-2">
+													    	<div class="top_country_choose_currency_choose_ul">
+													    		<ul>
+													    			<li class="mb15" v-for="item in 2"><a href="">English (Germany) <em>€ EUR </em></a></li>
+													    		</ul>
 													    	</div>
 													    	
 													    </div>
@@ -107,6 +111,27 @@
 													  </el-collapse-item>
 													</el-collapse>
 								    		</li>
+								    		<li v-if="index==3" class="Hilfe">
+								    			<div class="header_help_more_main">
+								    				<div class="livechat">
+								    					<i class="iconfont icon-fs_2016icon f18 color666 mr15 mt6">&#xf103;</i>
+								    					<div class="more_main_list">
+								    						<h3>Chatten Sie mit uns</h3>
+								    						<a href="">Live-Chat</a>
+								    					</div>
+								    					
+								    				</div>
+								    				<div class="livechat">
+								    					<i class="iconfont icon-fs_2016icon f18 color666 mr15 mt6">&#xf103;</i>
+								    					<div class="more_main_list">
+								    						<h3>Chatten Sie mit uns</h3>
+								    						<a href="">Live-Chat</a>
+								    					</div>
+								    					
+								    				</div>
+								    			</div>
+								    			
+								    	    </li>
 								    		
 								    		
 								    	</ul>
@@ -121,9 +146,7 @@
 		  		</div>
 		  	
 		  	</div>
-		  	<div class="w1428 main-tabs">
-		  		<div class="FS-logo"></div>
-		  	</div>
+		 
 	
 	</div>
 
@@ -205,7 +228,7 @@ Vue.use(ElementUI)
 		   	line-height: 38px;
 		  
 		   	height:100%;
-		   	border:1px solid red;
+		   	/*border:1px solid red;*/
 		   	.icon-fs_2017090504icon{
 		   		font-size:17px;
 		   	}
@@ -232,7 +255,18 @@ Vue.use(ElementUI)
 					 	width:100px;
 					 	height:200px;
 					 	padding: 0px 20px 25px;
+					 	z-index: 8;
 					 	ul{
+					 		/*容器0*/
+					 		.Warenkorb{
+					 			p{
+					 				color:#333;
+					 				width:100%;
+					 				font-size: 13px;
+					 				text-align: center;
+					 				
+					 			}
+					 		}
 					 		/*容器1*/
 					 		.Anmelden{
 					 			display: block;
@@ -316,7 +350,7 @@ Vue.use(ElementUI)
 					 			   border: solid 1px #dddddd;
 					 			   border-top:none;
 					 			  width:100%;
-					 			  height:232px;
+					 			  /*height:232px;*/
 					 			  padding:15px;
 					 			  .top_country_search_block{
 					 			  	height:34px;
@@ -369,6 +403,67 @@ Vue.use(ElementUI)
 										    }
 						 			  	}
 					 			  }
+					 			  	  .top_country_choose_currency_choose_ul{
+					 			  		
+						 			  	overflow: auto;
+						 			  	min-height:48px;overflow-y:auto;max-height:164px;
+						 			  	overflow-y:scroll;
+						 			  	ul>li>a{
+											display: block;
+										    line-height: 20px;
+										   
+										    color: #333;
+										    cursor: pointer;
+										    font-size: 13px;
+										    em{
+										 
+										    }
+						 			  	}
+					 			  }
+					 			}
+					 			.dslMain-2{
+					 				padding:15px 13px 0 13px;
+					 			}
+					 		}
+					 		/*容器三*/
+					 		.Hilfe{
+					 		
+					 			.header_help_more_main{
+					 				width:100%;
+					 				    padding-bottom:15px;
+					 				    .livechat{
+					 				    	width: 100%;
+					 				    	padding-top: 13px;
+					 				    	line-height: initial;
+										    padding-bottom: 15px;
+										    border-bottom: 1px solid #eee;
+										    display: flex;
+									   	   align-items:flex-start;
+									 	   justify-content:flex-start;
+										    
+										    .icon-fs_2016icon{
+										    	display: inline-block;
+										    	height:100%;
+										    	
+										    }
+										    .more_main_list{
+										    	text-align: left;
+										    	padding-top: 2px;
+										    	h3{
+										    	font-size: 14px;
+											    color: #333;
+											    font-weight: 400;
+											    
+										    	}
+										    	a{
+										        display: inline-block;
+											    margin-top: 5px;
+											    font-size: 13px;
+											    color: #6081d3
+										    	}
+										    	
+										    }
+					 				    }
 					 			}
 					 		}
 					 	
@@ -379,9 +474,27 @@ Vue.use(ElementUI)
 					 	width:0;
 					 }
 					 /*对应的 每个盒子样式*/
+					.tabIndexcss0{
+						 width:320px;
+						height:auto;
+						box-shadow: 0px 1px 8px 0 rgba(120, 102, 102, 0.3);
+						border: none;
+						background: #fff;
+						border-radius: 3px;
+						position: absolute;
+						transform: translateX(-50%);
+						top: 38px;
+						border: none;
+					    left: 40%;
+					    padding:15px;
+					}
 					.tabIndexcss1{
+						transform: translateX(-50%);
+						top: 38px;
+				
+					    left: 33%;
 					    width:270px;
-						height:290px;
+						height:auto;
 						box-shadow: 0px 1px 8px 0 rgba(120, 102, 102, 0.3);
 						border: none;
 						background: #fff;
@@ -396,6 +509,21 @@ Vue.use(ElementUI)
 						border-radius: 3px;
 						position: absolute;
 						left:-68px;
+					}
+					.tabIndexcss3{
+						position: absolute;
+					    background-color: #fff;
+					    top: 38px;
+					    left: 46%;
+					    transform: translateX(-50%);
+					    width: 210px;
+					    padding: 0 15px;
+					    box-shadow: 0px 1px 8px 0 rgba(120,102,102,.3);
+					    border-radius: 3px;
+					    border: none;
+						width:300px;
+						height:auto;
+					
 					}
 						 
 				 }
@@ -414,7 +542,7 @@ Vue.use(ElementUI)
 
    
    }
-   .main-tabs{
+   /*.main-tabs{
    	background:#fff;
    	height:72px;
    	display: flex;
@@ -426,7 +554,7 @@ Vue.use(ElementUI)
     border:0.5px solid red;
     background: url(https://img-en.fs.com/includes/templates/fiberstore/images/fs.com-logo.svg) no-repeat;
    	}
-   }
+   }*/
    
   }
 
